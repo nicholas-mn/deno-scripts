@@ -1,4 +1,4 @@
-import { updateTeableData } from "./functions.ts";
+import { updateTeableData, updateRuns, updateTeableLastChecked} from "./functions.ts";
 
 
 const reqGithubData = await fetch("https://github.com/teableio/teable/commits/develop.atom", {
@@ -13,8 +13,13 @@ const reqTeableData = await fetch("https://db.nich.dk/api/table/tblmaZUnSDON0HRV
   }
 })
 
+const teableDataComplete = JSON.parse(await reqTeableData.text());
+const teableData: string = teableDataComplete.fields.Content;
 const githubData: string = await reqGithubData.text();
-const teableData: string = JSON.parse(await reqTeableData.text()).fields.Content;
+
+// Update Runs each time
+const previousRun = teableDataComplete.fields.Runs
+updateRuns(previousRun, teableAuth)
 
 if (teableData.trim() !== githubData.trim()) {
   
@@ -26,4 +31,5 @@ if (teableData.trim() !== githubData.trim()) {
 
 } else {
   console.log("No new commits detected.")
+  updateTeableLastChecked(teableAuth)
 }
