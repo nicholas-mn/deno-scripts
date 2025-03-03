@@ -1,5 +1,5 @@
 export async function updateTeableData(data: string, auth: string) {
-  const rightNow = new Date().toISOString();
+  const rightNow = new Date().toISOString()
 
   const req = await fetch(
     "https://db.nich.dk/api/table/tblmaZUnSDON0HRVqlA/record/recvEWdCJuANblWU7gC",
@@ -19,13 +19,13 @@ export async function updateTeableData(data: string, auth: string) {
         },
       }),
     },
-  );
+  )
 
-  return req;
+  return req
 }
 
 export async function updateTeableLastChecked(auth: string) {
-  const rightNow = new Date().toISOString();
+  const rightNow = new Date().toISOString()
 
   const req = await fetch(
     "https://db.nich.dk/api/table/tblmaZUnSDON0HRVqlA/record/recvEWdCJuANblWU7gC",
@@ -43,13 +43,13 @@ export async function updateTeableLastChecked(auth: string) {
         },
       }),
     },
-  );
+  )
 
-  return req;
+  return req
 }
 
 export async function updateRuns(currentRuns: number, auth: string) {
-  const updatedRuns = currentRuns + 1;
+  const updatedRuns = currentRuns + 1
 
   const req = await fetch(
     "https://db.nich.dk/api/table/tblmaZUnSDON0HRVqlA/record/recvEWdCJuANblWU7gC",
@@ -67,7 +67,7 @@ export async function updateRuns(currentRuns: number, auth: string) {
         },
       }),
     },
-  );
+  )
 
-  return req;
+  return req
 }
