@@ -24,7 +24,7 @@ updateRuns(previousRun, teableAuth)
 if (teableData.trim() !== githubData.trim()) {
   
   console.log("New commits detected. Sending notification and updating Teable data.")
-  // TODO
+  
   updateTeableData(githubData, teableAuth)
 
   sendNotification(githubData)
