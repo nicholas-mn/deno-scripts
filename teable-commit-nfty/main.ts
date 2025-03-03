@@ -1,3 +1,5 @@
+import { updateTeableData } from "./functions.ts";
+
 
 const reqGithubData = await fetch("https://github.com/teableio/teable/commits/develop.atom", {
   method: "GET"
@@ -11,15 +13,16 @@ const reqTeableData = await fetch("https://db.nich.dk/api/table/tblmaZUnSDON0HRV
   }
 })
 
-const githubData = await reqGithubData.text();
-const teableData = JSON.parse(await reqTeableData.text()).fields.Content;
+const githubData: string = await reqGithubData.text();
+const teableData: string = JSON.parse(await reqTeableData.text()).fields.Content;
 
 if (teableData.trim() !== githubData.trim()) {
-  // TODO
+  
   console.log("New commits detected. Sending notification and updating Teable data.")
-  // editTeableData()
+  // TODO
+  updateTeableData(githubData, teableAuth)
 
-  // sendNotification(getNewestcommit())
+  // sendNotification(parseNewestcommit())
 
 } else {
   console.log("No new commits detected.")
