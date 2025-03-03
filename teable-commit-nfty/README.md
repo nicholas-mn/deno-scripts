@@ -1,6 +1,6 @@
 
 Checks if [Teable](https://github.com/teableio/teable) has new commits. 
-If it does, send a notificiation.
+If it does, send a notification.
 
 ## Instructions
 
