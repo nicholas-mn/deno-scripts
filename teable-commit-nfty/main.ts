@@ -5,6 +5,8 @@ import {
 } from "./teable.ts"
 import { sendNotification } from "./ntfy.ts"
 
+const rightNow = new Date().toISOString()
+
 const reqGithubData = await fetch(
   "https://github.com/teableio/teable/commits/develop.atom",
   {
@@ -33,13 +35,13 @@ updateRuns(previousRun, teableAuth)
 
 if (teableData.trim() !== githubData.trim()) {
   console.log(
-    "New commits detected. Sending notification and updating Teable data.",
+    `${rightNow}: New commits detected. Sending notification and updating Teable data.`,
   )
 
-  updateTeableData(githubData, teableAuth)
+  updateTeableData(githubData, teableAuth, rightNow)
 
   sendNotification(githubData)
 } else {
-  console.log("No new commits detected.")
-  updateTeableLastChecked(teableAuth)
+  console.log(`${rightNow}: No new commits detected.`)
+  updateTeableLastChecked(teableAuth, rightNow)
 }

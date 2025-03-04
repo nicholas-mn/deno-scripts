@@ -1,4 +1,8 @@
-export async function updateTeableData(data: string, auth: string) {
+export async function updateTeableData(
+  data: string,
+  auth: string,
+  IsoDate: string,
+) {
   const rightNow = new Date().toISOString()
 
   const req = await fetch(
@@ -13,8 +17,8 @@ export async function updateTeableData(data: string, auth: string) {
         "record": {
           "fields": {
             "Content": data,
-            "Last changed": rightNow,
-            "Last checked": rightNow,
+            "Last changed": IsoDate,
+            "Last checked": IsoDate,
           },
         },
       }),
@@ -24,9 +28,7 @@ export async function updateTeableData(data: string, auth: string) {
   return req
 }
 
-export async function updateTeableLastChecked(auth: string) {
-  const rightNow = new Date().toISOString()
-
+export async function updateTeableLastChecked(auth: string, IsoDate: string) {
   const req = await fetch(
     "https://db.nich.dk/api/table/tblmaZUnSDON0HRVqlA/record/recvEWdCJuANblWU7gC",
     {
@@ -38,7 +40,7 @@ export async function updateTeableLastChecked(auth: string) {
       body: JSON.stringify({
         "record": {
           "fields": {
-            "Last checked": rightNow,
+            "Last checked": IsoDate,
           },
         },
       }),
