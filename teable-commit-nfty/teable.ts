@@ -3,8 +3,6 @@ export async function updateTeableData(
   auth: string,
   IsoDate: string,
 ) {
-  const rightNow = new Date().toISOString()
-
   const req = await fetch(
     "https://db.nich.dk/api/table/tblmaZUnSDON0HRVqlA/record/recvEWdCJuANblWU7gC",
     {
